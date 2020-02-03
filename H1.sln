@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GEOMETRIA", "GEOMETRI\GEOMETRIA.csproj", "{61E4E0F5-5A8A-4176-BEBB-1676078F5840}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collections – Queues", "Collections – Queues\Collections – Queues.csproj", "{0BE62DED-1602-4B44-9A32-F1EE8D170B9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstInFirstOut", "FirstInFirstOut\FirstInFirstOut.csproj", "{938317E4-2236-43E7-AE2E-D7C8B92C7570}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{61E4E0F5-5A8A-4176-BEBB-1676078F5840}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61E4E0F5-5A8A-4176-BEBB-1676078F5840}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61E4E0F5-5A8A-4176-BEBB-1676078F5840}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61E4E0F5-5A8A-4176-BEBB-1676078F5840}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BE62DED-1602-4B44-9A32-F1EE8D170B9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BE62DED-1602-4B44-9A32-F1EE8D170B9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BE62DED-1602-4B44-9A32-F1EE8D170B9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BE62DED-1602-4B44-9A32-F1EE8D170B9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{938317E4-2236-43E7-AE2E-D7C8B92C7570}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{938317E4-2236-43E7-AE2E-D7C8B92C7570}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{938317E4-2236-43E7-AE2E-D7C8B92C7570}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{938317E4-2236-43E7-AE2E-D7C8B92C7570}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {938C4684-0543-47DD-934E-962C048E0E7A}
+	EndGlobalSection
+EndGlobal
