@@ -2,12 +2,12 @@
 
 namespace FirstInFirstOut
 {
-    class Guest
+    public class Guest
     {
         public string Name { get; set; }
         public byte Age { get; set; }
 
-        public Guest(string name, byte age, Queue<Guest> guests)
+        public Guest(string name, byte age)
         {
             Name = name;
             Age = age;

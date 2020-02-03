@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -8,48 +9,50 @@ using System.Threading.Tasks;
 
 namespace FirstInFirstOut
 {
-    class Program
+    partial class Program
     {
         static void Main(string[] args)
         {
             Queue<Guest> guests = new Queue<Guest>();
-
+            Logik logic = new Logik();
             StandardMessagesView standardMessages = new StandardMessagesView();
-            standardMessages.WelcomeMenu();
-            string inputFromUser = "";
-            inputFromUser = standardMessages.InputSelectMessage(inputFromUser);
-            Console.WriteLine();
-
-            switch (inputFromUser)
+            while (true)
             {
-                case "1":
-                    Console.WriteLine("1");
-                    break;
-                case "2":
-                    Console.WriteLine("2");
-                    break;
-                case "3":
-                    Console.WriteLine("3");
-                    break;
-                case "4":
-                    Console.WriteLine("4");
-                    break;
-                case "5":
-                    Console.WriteLine("5");
-                    break;
-                case "6":
-                    Console.WriteLine("6");
-                    break;
-                default:
-                    Console.WriteLine("7");
-                    break;
+                standardMessages.WelcomeMenu();
+                string inputFromUser = "";
+                inputFromUser = standardMessages.InputSelectMessage();
+                Console.WriteLine();
+
+                switch (inputFromUser)
+                {
+                    case "1":
+                        string name = inputFromUser = standardMessages.InputAddName();
+                        byte age = Convert.ToByte(inputFromUser = standardMessages.InputAddAge());
+                        logic.AddGuest(guests , name , age);
+                        break;
+                    case "2":
+
+                       logic.DeleteGuest(guests);
+                        break;
+                    case "3":
+                       int numberOfGuests = logic.ShowTheNumberOfGuests(guests);
+                       standardMessages.ShowNumbersOfGuests(numberOfGuests);
+                        break;
+                    case "4":
+                        Console.WriteLine("4");
+                        break;
+                    case "5":
+                        Console.WriteLine("5");
+                        break;
+                    case "6":
+                        logic.PrintAllItems(guests);
+                        break;
+                    default:
+                        logic.Exit();
+                        break;
+                }
+
             }
-
-        }
-
-        void AddGuest()
-        {
-
         }
     }
 }
