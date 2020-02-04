@@ -1,22 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FirstInFirstOut
 {
 
 
-    public class Logik
+    public class Logic
     {
 
         public void AddGuest(Queue<Guest> guests, string name, byte age)
         {
             guests.Enqueue(new Guest(name, age));
-
-        }
-
-        public void DeleteGuest(Queue<Guest> guests)
-        {
-            guests.Dequeue();
         }
 
         public int ShowTheNumberOfGuests(Queue<Guest> guests)
@@ -24,12 +19,18 @@ namespace FirstInFirstOut
             return guests.Count;
         }
 
-        public void ShowMinAndMaxGuests()
+        public byte ShowMinAgeOnGuests(Queue<Guest> guests, byte minAge)
         {
-
+            List<Guest> minAgeList = guests.ToList();
+            return Convert.ToByte(minAgeList);
         }
 
-        public void FindAnItem()
+        public byte ShowMaxAgeOnGuests(Queue<Guest> guests)
+        {
+            return 0;
+        }
+
+        public void FindAGuest(Queue<Guest> guests)
         {
 
         }

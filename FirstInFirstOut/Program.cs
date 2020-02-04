@@ -14,10 +14,11 @@ namespace FirstInFirstOut
         static void Main(string[] args)
         {
             Queue<Guest> guests = new Queue<Guest>();
-            Logik logic = new Logik();
+            Logic logic = new Logic();
             StandardMessagesView standardMessages = new StandardMessagesView();
             while (true)
             {
+
                 standardMessages.WelcomeMenu();
                 string inputFromUser = "";
                 inputFromUser = standardMessages.InputSelectMessage();
@@ -26,25 +27,33 @@ namespace FirstInFirstOut
                 switch (inputFromUser)
                 {
                     case "1":
+                        Clear();
                         string name = inputFromUser = standardMessages.InputAddName();
                         byte age = Convert.ToByte(inputFromUser = standardMessages.InputAddAge());
-                        logic.AddGuest(guests , name , age);
+                        logic.AddGuest(guests, name, age);
                         break;
                     case "2":
-
-                       logic.DeleteGuest(guests);
+                        Clear();
+                        standardMessages.GuestLeaves(guests);
                         break;
                     case "3":
-                       int numberOfGuests = logic.ShowTheNumberOfGuests(guests);
-                       standardMessages.ShowNumbersOfGuests(numberOfGuests);
+                        Clear();
+                        int numberOfGuests = logic.ShowTheNumberOfGuests(guests);
+                        standardMessages.ShowNumbersOfGuests(numberOfGuests);
                         break;
                     case "4":
-                        Console.WriteLine("4");
+                        Clear();
+                        byte minAge = 0;
+                        minAge = logic.ShowMinAgeOnGuests(guests, minAge);
+                        // standardMessages.MinAge(minAge);
                         break;
                     case "5":
+
+                        Clear();
                         Console.WriteLine("5");
                         break;
                     case "6":
+                        Clear();
                         logic.PrintAllItems(guests);
                         break;
                     default:
@@ -53,6 +62,11 @@ namespace FirstInFirstOut
                 }
 
             }
+        }
+
+        static void Clear()
+        {
+            Console.Clear();
         }
     }
 }
