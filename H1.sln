@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collections – Queues", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstInFirstOut", "FirstInFirstOut\FirstInFirstOut.csproj", "{938317E4-2236-43E7-AE2E-D7C8B92C7570}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dictionaries", "Dictionaries\Dictionaries.csproj", "{479A4FCE-38C3-41A6-8224-DB6F1E66CAEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yatzy", "Yatzy\Yatzy.csproj", "{07FCB280-7706-45EC-9018-ECEA5E27869E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{938317E4-2236-43E7-AE2E-D7C8B92C7570}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{938317E4-2236-43E7-AE2E-D7C8B92C7570}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{938317E4-2236-43E7-AE2E-D7C8B92C7570}.Release|Any CPU.Build.0 = Release|Any CPU
+		{479A4FCE-38C3-41A6-8224-DB6F1E66CAEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{479A4FCE-38C3-41A6-8224-DB6F1E66CAEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{479A4FCE-38C3-41A6-8224-DB6F1E66CAEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{479A4FCE-38C3-41A6-8224-DB6F1E66CAEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07FCB280-7706-45EC-9018-ECEA5E27869E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07FCB280-7706-45EC-9018-ECEA5E27869E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07FCB280-7706-45EC-9018-ECEA5E27869E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07FCB280-7706-45EC-9018-ECEA5E27869E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
