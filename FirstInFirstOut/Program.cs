@@ -44,13 +44,17 @@ namespace FirstInFirstOut
                     case "4":
                         Clear();
                         byte minAge = 0;
+                        byte maxAge = 0;
                         minAge = logic.ShowMinAgeOnGuests(guests, minAge);
-                        // standardMessages.MinAge(minAge);
+                        maxAge = logic.ShowMaxAgeOnGuests(guests, maxAge);
+                        standardMessages.MinAge(minAge);
+                        standardMessages.MaxAge(maxAge);
                         break;
                     case "5":
-
                         Clear();
-                        Console.WriteLine("5");
+                        name = inputFromUser = standardMessages.FindGuest();
+                        logic.FindAGuest(guests, name);
+                        standardMessages.GuestFound(name);
                         break;
                     case "6":
                         Clear();

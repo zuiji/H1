@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace FirstInFirstOut
 {
@@ -21,18 +20,54 @@ namespace FirstInFirstOut
 
         public byte ShowMinAgeOnGuests(Queue<Guest> guests, byte minAge)
         {
-            List<Guest> minAgeList = guests.ToList();
-            return Convert.ToByte(minAgeList);
+            minAge = guests.Peek().Age;
+
+
+            foreach (Guest guest in guests)
+            {
+
+                if (guest.Age < minAge)
+                {
+                    minAge = guest.Age;
+                }
+            }
+
+            return minAge;
         }
 
-        public byte ShowMaxAgeOnGuests(Queue<Guest> guests)
+        public byte ShowMaxAgeOnGuests(Queue<Guest> guests, byte maxAge)
         {
-            return 0;
+            maxAge = guests.Peek().Age;
+
+
+            foreach (Guest guest in guests)
+            {
+
+                if (guest.Age > maxAge)
+                {
+                    maxAge = guest.Age;
+                }
+            }
+
+            return maxAge;
         }
 
-        public void FindAGuest(Queue<Guest> guests)
+        public string FindAGuest(Queue<Guest> guests, string name)
         {
+            name = guests.Peek().Name;
+            foreach (Guest guest in guests)
+            {
+                if (guest.Name == name)
+                {
+                    name = guest.Name;
+                }
+                else
+                {
+                    return "Guest not found on the list";
+                }
+            }
 
+            return name;
         }
 
         public void PrintAllItems(Queue<Guest> guests)

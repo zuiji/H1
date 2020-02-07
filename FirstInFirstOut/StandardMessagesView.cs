@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FirstInFirstOut
 {
@@ -60,6 +57,22 @@ namespace FirstInFirstOut
         public void MinAge(byte minAge)
         {
             Console.WriteLine($"The lowest age is {minAge}");
+        }
+        public void MaxAge(byte maxAge)
+        {
+            Console.WriteLine($"The lowest age is {maxAge}");
+        }
+
+        public string FindGuest()
+        {
+            Console.WriteLine("Please type the name you are looking for");
+            string inputFromUser = Console.ReadLine();
+            return inputFromUser;
+        }
+
+        public void GuestFound(string name)
+        {
+            Console.WriteLine($"We did find {name} on the list");
         }
     }
 }
