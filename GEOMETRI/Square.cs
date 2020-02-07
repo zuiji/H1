@@ -8,25 +8,29 @@ namespace geometry
 {
     public class Square
     {
-        private double Sides { get; set; }
         
+        //this is my prop
+        private double Sides { get; set; }
+
+        //ths is an ementy constructor
         public Square() { }
 
+        //This is my Constructor who sets the sides.
         public Square(double sides)
         {
             this.Sides = sides;
         }
+
+        //This method do calculate the Area 
         public double Area()
         {
-            double area = Sides * Sides;
-            return area;
+            return Sides * Sides;
         }
 
+        //This method do calculate the Circumference
         public double Circumference()
         {
-            double circumference = Sides * 4;
-            return circumference;
-
+            return Sides * 4;
         }
     }
 }

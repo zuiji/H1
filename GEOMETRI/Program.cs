@@ -10,37 +10,38 @@ namespace geometry
     {
         static void Main(string[] args)
         {
+            //doing so StandardMessages are able to be cached. 
             StandardMessages standardMessages = new StandardMessages();
+
+            //doing so Program are able to be cached.
             Program program = new Program();
+
+            //creating my Squares sides.
             Square square = new Square(1.25);
             Square square2 = new Square(2.5);
             Square square3 = new Square(8.58);
             Square square4 = new Square(80);
             Square square5 = new Square(6.95);
 
-
+            //typing out my welcome message.
             standardMessages.WelcomeMessage();
-            Console.WriteLine("Circumference");
-            Console.WriteLine(square.Circumference());
-            Console.WriteLine(square2.Circumference());
-            Console.WriteLine(square3.Circumference());
-            Console.WriteLine(square4.Circumference());
-            Console.WriteLine(square5.Circumference());
 
-            Console.WriteLine();
-            Console.WriteLine("Area");
-            Console.WriteLine(square.Area());
-            Console.WriteLine(square2.Area());
-            Console.WriteLine(square3.Area());
-            Console.WriteLine(square4.Area());
-            Console.WriteLine(square5.Area());
+            //typing out Circumference message.
+            standardMessages.Circumference(square, square2, square3, square4, square5);
 
-            program.Break();
+            //typing out Area message.
+            standardMessages.Area(square, square2, square3, square4, square5);
+
+            //calling my break method.
+            program.Exit();
         }
 
-        void Break()
+        //Exit method 
+        public void Exit()
         {
+            Console.WriteLine($"Sorry to see you leave GoodBye");
             Console.ReadKey();
+            Environment.Exit(-1);
         }
     }
 }
