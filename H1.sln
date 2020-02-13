@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dictionaries", "Dictionarie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yatzy", "Yatzy\Yatzy.csproj", "{07FCB280-7706-45EC-9018-ECEA5E27869E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendingMachine", "VendingMachine\VendingMachine.csproj", "{DFF20F4E-6C3F-45C0-91B5-F68090B7FD6A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{07FCB280-7706-45EC-9018-ECEA5E27869E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07FCB280-7706-45EC-9018-ECEA5E27869E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07FCB280-7706-45EC-9018-ECEA5E27869E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFF20F4E-6C3F-45C0-91B5-F68090B7FD6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFF20F4E-6C3F-45C0-91B5-F68090B7FD6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFF20F4E-6C3F-45C0-91B5-F68090B7FD6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFF20F4E-6C3F-45C0-91B5-F68090B7FD6A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
