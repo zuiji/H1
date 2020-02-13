@@ -19,7 +19,7 @@ namespace VendingMachine
 
         public OutputDrawer OutputDrawer { get; set; }
 
-        public ServicePanel ServicePanel { get; set; }
+        public Panel Panel { get; set; }
 
         public Door MachineDoor { get; set; }
 
@@ -42,7 +42,7 @@ namespace VendingMachine
         public MachineStock()
         {
             Products = new List<Stack<Product>>();
-            
+
             //todo set in products
             //Products.Add(new Stack<Product>() { new Drink(), new Drink() });
             //Products.Add(new Stack<Product>() { new Drink(), new Drink() });
@@ -106,8 +106,16 @@ namespace VendingMachine
     {
         private bool drawerOpen = false;
 
-        void OpenDrawer()
+        bool IsOpenDrawer()
         {
+            if (true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 
         }
 
@@ -133,46 +141,61 @@ namespace VendingMachine
         }
     }
 
-    class ServicePanel
+    class Panel
     {
         public bool inService { get; set; }
         public bool isReady { get; set; }
+        private string adminCode = "1234";
+
+
+
+        bool DoorOpen()
+        {
+            return false;
+        }
+
+        bool OutputDrawerIsOpen()
+        {
+            return false;
+        }
+
+        bool IsInService()
+        {
+            return inService = false;
+        }
+
+        bool IsReady()
+        {
+            return true;
+        }
 
         void AdminPanel()
         {
+            if (inService == (adminCode == "1234"))
+            {
+                ServicePanel servicePanel = new ServicePanel();
+                servicePanel.AdminMode();
+            }
+            else
+            {
+                throw new ArgumentException("You need to set it in service");
+            }
 
         }
-
-        void DoorOpen()
-        {
-
-        }
-
-        void OutputDrawerIsOpen()
-        {
-
-        }
-
-        void IsInService()
-        {
-
-        }
-
-        void IsReady()
-        {
-
-        }
-
         void BuyProduct()
         {
 
         }
     }
 
-    class VendingMachineAdminServicePanel
+    class ServicePanel
     {
-        //ToDo
+        public void AdminMode()
+        {
+
+        }
     }
+
     class machineRefiller
     {
         List<Product> DeliverProducs(List<Product> order)
@@ -180,6 +203,7 @@ namespace VendingMachine
             throw new NotImplementedException();
         }
     }
+
     class MachineSafeBox
     {
         public bool coinInput { get; set; }
@@ -206,6 +230,7 @@ namespace VendingMachine
 
         }
     }
+
     class Coin
     {
         public int Value { get; }
@@ -264,6 +289,7 @@ namespace VendingMachine
         }
 
     }
+
     class BroughtProduct
     {
         public int BroughtProductId { get; set; }
@@ -273,6 +299,4 @@ namespace VendingMachine
 
         }
     }
-
-
 }
