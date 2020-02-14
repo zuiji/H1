@@ -174,8 +174,7 @@ namespace Yatzy
             return dices.Where(i => i.Value == 4).Sum(i => i.Value);
         }
     }
-
-
+    
     class fifthSRow : Row
     {
         public override bool IsValidMove(List<Dice> dices)
