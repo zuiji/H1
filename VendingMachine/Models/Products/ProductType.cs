@@ -4,5 +4,9 @@
     {
         CocaCola,
         Fanta,
+        Cocio,
+        Snickers,
+        Mars,
+        Bounty
     }
 }

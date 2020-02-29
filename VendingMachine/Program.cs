@@ -8,7 +8,7 @@ namespace VendingMachine
     {
         static void Main(string[] args)
         {
-            VendingMachine vendingMachine = new VendingMachine();
+            Gui gui = new Gui();
         }
     }
 }

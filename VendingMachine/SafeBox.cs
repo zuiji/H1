@@ -2,14 +2,14 @@
 
 namespace VendingMachine
 {
-    class MachineSafeBox
+    class SafeBox
     {
         public bool coinInput { get; set; }
         public bool HaveReturnCoin { get; set; }
         public int getCoinValue { get; set; }
         private List<Coin> AmountOfCoins { get; }
 
-        public MachineSafeBox()
+        public SafeBox()
         {
             AmountOfCoins = new List<Coin>();
             AmountOfCoins.Add(new Coin(1));

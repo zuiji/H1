@@ -44,21 +44,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BroughtProduct.cs" />
+    <Compile Include="GetAnswers.cs" />
+    <Compile Include="Gui.cs" />
     <Compile Include="Models\Coin.cs" />
     <Compile Include="Door.cs" />
-    <Compile Include="Models\Drink.cs" />
-    <Compile Include="MachineRefiler.cs" />
-    <Compile Include="MachineSafeBox.cs" />
+    <Compile Include="Models\Products\Drink.cs" />
+    <Compile Include="Refiler.cs" />
+    <Compile Include="SafeBox.cs" />
     <Compile Include="MachineStock.cs" />
     <Compile Include="MachineWheel.cs" />
     <Compile Include="OutputDrawer.cs" />
-    <Compile Include="Panel.cs" />
-    <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\ProductType.cs" />
+    <Compile Include="Models\Panel\ServicePanel.cs" />
+    <Compile Include="Models\Products\Product.cs" />
+    <Compile Include="Models\Products\ProductType.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServicePanel.cs" />
-    <Compile Include="Models\Snack.cs" />
+    <Compile Include="Models\Panel\IPanel.cs" />
+    <Compile Include="Models\Products\Snack.cs" />
+    <Compile Include="Models\Panel\UserPanel.cs" />
     <Compile Include="VendingMachine.cs" />
   </ItemGroup>
   <ItemGroup>

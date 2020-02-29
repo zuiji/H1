@@ -12,28 +12,40 @@ namespace VendingMachine
             Products = new Dictionary<ProductType, Stack<Product>>();
 
             //todo set in products
+
+            //adding Drinks here
             Products.Add(ProductType.CocaCola, new Stack<Product>(12));
             for (int i = 0; i < 12; i++)
             {
                 Products[ProductType.CocaCola]?.Push(new Drink("cola", 20, ProductType.CocaCola, 0.50));
             }
+            Products.Add(ProductType.Fanta, new Stack<Product>(12));
+            for (int i = 0; i < 12; i++)
+            {
+                Products[ProductType.Fanta]?.Push(new Drink("Fanta", 20, ProductType.Fanta, 0.50));
+            }
+            Products.Add(ProductType.Cocio, new Stack<Product>(12));
+            for (int i = 0; i < 12; i++)
+            {
+                Products[ProductType.Cocio]?.Push(new Drink("Cocio", 15, ProductType.Cocio, 0.50));
+            }
 
-            //Products.Add(new Stack<Product>() { new Drink(), new Drink() });
-            //Products.Add(new Stack<Product>() { new Drink(), new Drink() });
-            //Products.Add(new Stack<Product>() { new Drink(), new Drink() });
-            //Products.Add(new Stack<Product>() { new Drink(), new Drink() });
-            //Products.Add(new Stack<Product>() { new Drink(), new Drink() });
-            //Products.Add(new Stack<Product>() { new Drink(), new Drink() });
-            //Products.Add(new Stack<Product>() { new Drink(), new Drink() });
-            //Products.Add(new Stack<Product>() { new Drink(), new Drink() });
-            //Products.Add(new Stack<Product>() { new Snack(), new Snack() });
-            //Products.Add(new Stack<Product>() { new Snack(), new Snack() });
-            //Products.Add(new Stack<Product>() { new Snack(), new Snack() });
-            //Products.Add(new Stack<Product>() { new Snack(), new Snack() });
-            //Products.Add(new Stack<Product>() { new Snack(), new Snack() });
-            //Products.Add(new Stack<Product>() { new Snack(), new Snack() });
-            //Products.Add(new Stack<Product>() { new Snack(), new Snack() });
-            //Products.Add(new Stack<Product>() { new Snack(), new Snack() });
+            //Adding snacks here 
+            Products.Add(ProductType.Snickers, new Stack<Product>(12));
+            for (int i = 0; i < 12; i++)
+            {
+                Products[ProductType.Snickers]?.Push(new Snack("Snickers", 10, ProductType.Snickers, 50));
+            }
+            Products.Add(ProductType.Mars, new Stack<Product>(12));
+            for (int i = 0; i < 12; i++)
+            {
+                Products[ProductType.Mars]?.Push(new Snack("Mars", 10, ProductType.Mars, 50));
+            }
+            Products.Add(ProductType.Bounty, new Stack<Product>(12));
+            for (int i = 0; i < 12; i++)
+            {
+                Products[ProductType.Bounty]?.Push(new Snack("Bounty", 10, ProductType.Bounty, 50));
+            }
         }
 
         public void AddItemsToStock(Dictionary<ProductType, Stack<Product>> items)
@@ -51,23 +63,7 @@ namespace VendingMachine
             }
         }
 
-        void ProductCheck()
-        {
-            foreach (var productsKey in Products.Keys)
-            {
-
-                if (Products[productsKey].FirstOrDefault() is Drink)
-                {
-                    Console.WriteLine("Dette er en drink");
-                }
-                else if (Products[productsKey].FirstOrDefault() is Snack)
-                {
-                    Console.WriteLine("Dette er en snack");
-                }
-            }
-        }
-
-        public List<Product> getAlmostEmptyStock()
+        public List<Product> GetAlmostEmptyStock()
         {
             List<Product> productAlmostOutOfStock = new List<Product>();
             foreach (ProductType productsId in Products.Keys)
@@ -81,5 +77,13 @@ namespace VendingMachine
             return productAlmostOutOfStock;
         }
 
+        void ProductCheck()
+        {
+            foreach (var productsKey in Products.Keys)
+            {
+                Console.WriteLine($"This is a {productsKey}");
+            }
+        }
+        
     }
 }

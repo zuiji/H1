@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace VendingMachine
 {
-    class MachineRefiler
+    class Refiler
     {
        public Dictionary<ProductType, Stack<Product>> DeliverProducs(Dictionary<ProductType, Stack<Product>> order)
        {
