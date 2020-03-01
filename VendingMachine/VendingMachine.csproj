@@ -46,7 +46,7 @@
     <Compile Include="BroughtProduct.cs" />
     <Compile Include="GetAnswers.cs" />
     <Compile Include="Gui.cs" />
-    <Compile Include="Models\Coin.cs" />
+    <Compile Include="Models\Coins\Coin.cs" />
     <Compile Include="Door.cs" />
     <Compile Include="Models\Products\Drink.cs" />
     <Compile Include="Refiler.cs" />

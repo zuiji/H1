@@ -11,8 +11,6 @@ namespace VendingMachine
         {
             Products = new Dictionary<ProductType, Stack<Product>>();
 
-            //todo set in products
-
             //adding Drinks here
             Products.Add(ProductType.CocaCola, new Stack<Product>(12));
             for (int i = 0; i < 12; i++)
@@ -77,13 +75,21 @@ namespace VendingMachine
             return productAlmostOutOfStock;
         }
 
-        void ProductCheck()
+        public void ProductCheck()
         {
             foreach (var productsKey in Products.Keys)
             {
                 Console.WriteLine($"This is a {productsKey}");
             }
         }
-        
+
+        public void ProdcutPrintOut()
+        {
+            foreach (KeyValuePair<ProductType, Stack<Product>> product in Products)
+            {
+                Console.WriteLine($"This is a test {Products.Values}");
+            }
+        }
+
     }
 }

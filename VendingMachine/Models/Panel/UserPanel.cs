@@ -9,9 +9,13 @@ namespace VendingMachine
     class UserPanel : IPanel
     {
         public bool DrawerStage { get; }
+
         public void AccessPanel()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("welcome");
+            Console.WriteLine(
+                $"You can buy the following products\n{ProductType.CocaCola}\n{ProductType.Bounty}\n{ProductType.Cocio}\n{ProductType.Fanta}\n{ProductType.Mars}\n{ProductType.Snickers}");
+
         }
     }
 }

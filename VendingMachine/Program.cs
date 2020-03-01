@@ -9,6 +9,7 @@ namespace VendingMachine
         static void Main(string[] args)
         {
             Gui gui = new Gui();
+            gui.PowerOn();
         }
     }
 }
