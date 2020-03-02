@@ -6,11 +6,13 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using GetAnswer;
+using VendingMachine.Models;
 
 namespace VendingMachine
 {
     public class Gui
     {
+        private VendingMachine vendingMachine = Singletons.GetVendingMachine();
         public IPanel AccessPanel;
 
         public void AccessUserMode()
@@ -30,7 +32,7 @@ namespace VendingMachine
                 Console.Write("Admin Code :");
                 string temp = Console.ReadLine();
 
-                if (temp == VendingMachine.AdminCode)
+                if (temp == vendingMachine.AdminCode)
                 {
                     AccessPanel.AccessPanel();
 
@@ -39,15 +41,18 @@ namespace VendingMachine
                 trys++;
             }
 
-            Console.WriteLine("You did use to many try and will return to user panel.");
-            Thread.Sleep(3000);
-            AccessUserMode();
+            if (trys == 3)
+            {
 
+                Console.WriteLine("You did use to many try and will return to user panel.");
+                Thread.Sleep(3000);
+
+            }
         }
 
         public Gui()
         {
-        
+
         }
         public void PowerOn()
         {
@@ -55,7 +60,6 @@ namespace VendingMachine
             switch (Anwser)
             {
                 case 0:
-
                     AccessUserMode();
                     break;
                 case 1:
@@ -67,6 +71,11 @@ namespace VendingMachine
         public void PowerOff()
         {
             Environment.Exit(0);
+        }
+
+        public static void Clear()
+        {
+            Console.Clear();
         }
     }
 }

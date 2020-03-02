@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Threading;
 using GetAnswer;
+using VendingMachine.Models;
 
 namespace VendingMachine
 {
     class ServicePanel : IPanel
     {
+        VendingMachine vendingMachine = Singletons.GetVendingMachine();
         public bool DrawerStage { get; }
         public void AccessPanel()
         {
@@ -14,20 +16,22 @@ namespace VendingMachine
             switch (Anwser)
             {
                 case 0:
+                    Gui.Clear();
                     Console.WriteLine("door is now open");
                     int Answer =
                         GetAnswers.GetChoiceFromListAsInt("Will you Refill the products or Access the SafeBox", "Refill", "safeBox");
                     switch (Answer)
                     {
                         case 0:
-                            VendingMachine.RefillStock(new Refiler());
+                            vendingMachine.RefillStock(new Refiler());
                             break;
                         case 1:
-                            VendingMachine.SafeBoxOptions();
+                            vendingMachine.SafeBoxOptions();
                             break;
                     }
                     break;
                 case 1:
+                    Gui.Clear();
                     Console.WriteLine("Door is not open And you will exit service more");
                     Thread.Sleep(3000);
                     Gui gui = new Gui();

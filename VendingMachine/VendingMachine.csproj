@@ -43,12 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BroughtProduct.cs" />
     <Compile Include="GetAnswers.cs" />
     <Compile Include="Gui.cs" />
     <Compile Include="Models\Coins\Coin.cs" />
     <Compile Include="Door.cs" />
     <Compile Include="Models\Products\Drink.cs" />
+    <Compile Include="Models\Singletons.cs" />
     <Compile Include="Refiler.cs" />
     <Compile Include="SafeBox.cs" />
     <Compile Include="MachineStock.cs" />

@@ -2,46 +2,63 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using GetAnswer;
+using VendingMachine.Models;
 
 namespace VendingMachine
 {
-    static class VendingMachine
+    class VendingMachine
     {
-        public static SafeBox SafeBox { get; set; }
+        public SafeBox SafeBox { get; set; }
 
-        public static OutputDrawer OutputDrawer { get; set; }
+        public OutputDrawer OutputDrawer { get; set; }
 
-        public static IPanel Panel { get; set; }
+        public IPanel Panel { get; set; }
 
-        public static Door MachineDoor { get; set; }
+        public Door MachineDoor { get; set; }
 
-        public static MachineStock MachineStock { get; set; }
+        public MachineStock MachineStock { get; set; }
 
-        private static string adminCode = "1234";
-        public static string AdminCode { get { return adminCode; } private set { adminCode = value; } }
+        private string adminCode = "1234";
+        public string AdminCode { get { return adminCode; } private set { adminCode = value; } }
 
-        public static void RefillStock(Refiler refiler)
+        public VendingMachine()
+        {
+            MachineStock = Singletons.GetMachineStock();
+            SafeBox = Singletons.GetSafeBox();
+        }
+
+        public void RefillStock(Refiler refiler)
         {
             List<Product> outOfProducts = MachineStock.GetAlmostEmptyStock();
             Dictionary<ProductType, Stack<Product>> order = new Dictionary<ProductType, Stack<Product>>();
 
-            //runs over the list of Product outOfProduct and adding it to new stack of Products
-            foreach (Product outOfProduct in outOfProducts)
+            if (outOfProducts == null)
             {
-                order.Add(outOfProduct.ProductType, new Stack<Product>());
-                for (int i = 0; i < 10; i++)
+                //runs over the list of Product outOfProduct and adding it to new stack of Products
+                foreach (Product outOfProduct in outOfProducts)
                 {
-                    order[outOfProduct.ProductType]?.Push(outOfProduct);
+                    order.Add(outOfProduct.ProductType, new Stack<Product>());
+                    for (int i = 0; i < 10; i++)
+                    {
+                        order[outOfProduct.ProductType]?.Push(outOfProduct);
+                    }
                 }
+                Dictionary<ProductType, Stack<Product>> delivery = refiler.DeliverProducs(order);
+
+                MachineStock.AddItemsToStock(delivery);
+                Console.WriteLine("The machine are now refilled.");
+            }
+            else
+            {
+                Gui.Clear();
+                Console.WriteLine("The machine is already full");
             }
 
-            Dictionary<ProductType, Stack<Product>> delivery = refiler.DeliverProducs(order);
 
-            MachineStock.AddItemsToStock(delivery);
         }
 
 
-        public static void SafeBoxOptions()
+        public void SafeBoxOptions()
         {
             int Answer =
                 GetAnswers.GetChoiceFromListAsInt("Will you Refill the safebox with coins or emty it for coins", "Refill", "emty");
@@ -56,9 +73,9 @@ namespace VendingMachine
             }
         }
 
-        static void SafeBoxRefillCoins()
+        void SafeBoxRefillCoins()
         {
-            if (SafeBox.HaveReturnCoin && InService())
+            if (SafeBox.HaveReturnCoin)
             {
                 if (SafeBox.getCoinValue >= 500)
                 {
@@ -71,9 +88,9 @@ namespace VendingMachine
             }
         }
 
-        static void SafeBoxRemoveCoins()
+        void SafeBoxRemoveCoins()
         {
-            if (SafeBox.HaveReturnCoin && InService())
+            if (SafeBox.HaveReturnCoin)
             {
                 if (SafeBox.getCoinValue >= 500)
                 {
@@ -86,29 +103,30 @@ namespace VendingMachine
             }
         }
 
-        public static void Pay()
+        public void Pay()
         {
             int payedCoin = 0;
             int amountToPay = 0;
 
             int Answer =
                 GetAnswers.GetChoiceFromListAsInt("Please inset Coins so its match the product price", "1", "2", "5", "10", "20");
+
             switch (Answer)
             {
+                case 0:
+                    payedCoin += 1;
+                    break;
                 case 1:
-                    payedCoin += Answer;
+                    payedCoin += 2;
                     break;
                 case 2:
-                    payedCoin += Answer;
+                    payedCoin += 5;
                     break;
-                case 5:
-                    payedCoin += Answer;
+                case 3:
+                    payedCoin += 10;
                     break;
-                case 10:
-                    payedCoin += Answer;
-                    break;
-                case 20:
-                    payedCoin += Answer;
+                case 4:
+                    payedCoin += 20;
                     break;
 
             }
@@ -127,22 +145,11 @@ namespace VendingMachine
 
         }
 
-        static void BorughtProduct()
+        public void BorughtProduct(ProductType productType)
         {
+            //todo Machinstock shall pop a product base on Producttype.
 
         }
 
-        static bool InService()
-        {
-            return Panel is ServicePanel;
-        }
-
-        static void EnableServiceMode()
-        {
-            if (!InService() && adminCode == "1234")
-            {
-                Panel = new ServicePanel();
-            }
-        }
     }
 }

@@ -7,6 +7,6 @@
         Cocio,
         Snickers,
         Mars,
-        Bounty
+        Bounty,
     }
 }

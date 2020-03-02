@@ -10,7 +10,7 @@ namespace VendingMachine
         {
             get
             {
-                if (AmountOfCoins.Count < 0)
+                if (AmountOfCoins.Count > 0)
                 {
                     return true;
                 }
