@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yatzy", "Yatzy\Yatzy.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendingMachine", "VendingMachine\VendingMachine.csproj", "{DFF20F4E-6C3F-45C0-91B5-F68090B7FD6A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FightArena", "FightArena\FightArena.csproj", "{1654F19F-C021-45D9-A5AC-8B6B8597643C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{DFF20F4E-6C3F-45C0-91B5-F68090B7FD6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFF20F4E-6C3F-45C0-91B5-F68090B7FD6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFF20F4E-6C3F-45C0-91B5-F68090B7FD6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1654F19F-C021-45D9-A5AC-8B6B8597643C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1654F19F-C021-45D9-A5AC-8B6B8597643C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1654F19F-C021-45D9-A5AC-8B6B8597643C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1654F19F-C021-45D9-A5AC-8B6B8597643C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
