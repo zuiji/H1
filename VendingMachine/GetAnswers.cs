@@ -27,6 +27,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Remoting.Services;
 using System.Text;
+using VendingMachine;
 
 namespace GetAnswer
 {
@@ -46,6 +47,32 @@ namespace GetAnswer
         ///     The Dictionary containing the startlinNumber of an answer
         /// </summary>
         private static readonly Dictionary<string, int> LineNumbers = new Dictionary<string, int>();
+
+        /// <summary>
+        ///     Gets the user choice from the user as an enum,
+        /// </summary>
+        /// <typeparam name="TEnumType">The enum type you want to use to get answers</typeparam>
+        /// <param name="question">The Question/Choice you want the user to Answer/Make</param>
+        /// <returns>The answer of the user as a Enum of type TEnumType</returns>
+        public static TEnumType GetChoiceFromEnum<TEnumType>(string question) where TEnumType : struct, Enum
+        {
+            var enumNames = Enum.GetNames(typeof(TEnumType));
+            if (typeof(TEnumType).BaseType != typeof(Enum))
+            {
+                throw new InvalidCastException();
+            }
+            
+            var answer = GetChoiceFromListAsString(question, enumNames);
+
+            if (Enum.TryParse(answer, out TEnumType returnValue))
+            {
+                return returnValue;
+            }
+            else
+            {
+                throw new InvalidCastException("Cannot get value from the enum");
+            }
+        }
 
         /// <summary>
         ///     Gets the user choice from the user

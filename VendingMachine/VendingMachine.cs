@@ -133,7 +133,7 @@ namespace VendingMachine
 
             if (payedCoin == amountToPay)
             {
-                MachineWheel machineWheel = new MachineWheel();
+                var machineWheel = new MachineWheel();
                 machineWheel.Turn();
             }
 
@@ -145,10 +145,9 @@ namespace VendingMachine
 
         }
 
-        public void BorughtProduct(ProductType productType)
+        public Product BroughtProduct(ProductType productType)
         {
-            //todo Machinstock shall pop a product base on Producttype.
-
+            return MachineStock.RemoveProductFromStock(productType);
         }
 
     }

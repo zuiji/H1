@@ -61,6 +61,19 @@ namespace VendingMachine
             }
         }
 
+        public Product RemoveProductFromStock(ProductType productType)
+        {
+
+            if (Products.ContainsKey(productType) && Products[productType].Any())
+            {
+                return Products[productType].Pop();
+            }
+
+            return null;
+            //MachineStock.Products[productType].Pop();
+
+        }
+
         public List<Product> GetAlmostEmptyStock()
         {
             List<Product> productAlmostOutOfStock = new List<Product>();
