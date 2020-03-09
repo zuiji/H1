@@ -10,25 +10,28 @@ namespace FightArena
 {
     class Program
     {
-        public static List<SuperHeros> Heros = new List<SuperHeros>();
+      
         static void Main(string[] args)
         {
+            List<SuperHeros> Heros = new List<SuperHeros>();
 
-            CreatingHero();
-
-
+            CreatingHero(Heros);
+            foreach (SuperHeros superHerose in Heros)
+            {
+                Console.WriteLine($"{superHerose.Name} {superHerose.AttackPower} {superHerose.Defence} {superHerose.HitPoints}");
+            }
         }
 
-        static void CreatingHero()
+       static  void CreatingHero(List<SuperHeros> Heros)
         {
             Heros.Add(new SuperHeros("Kong fu Harry", 2, 5, 120));
-            Heros.Add(new SuperHeros("Super hunden dino", SuperHeros.SettingAttackRange(), SuperHeros.SettingDefenceRange(), 70));
+            Heros.Add(new SuperHeros("Super hunden dino", 70));
             Heros.Add(new SuperHeros("Hurtig Karl", 5, 3, 90));
-            Heros.Add(new SuperHeros("Gift Gunner", SuperHeros.SettingAttackRange(), 5, 60));
+            Heros.Add(new SuperHeros("Gift Gunner", 5, 60));
             Heros.Add(new SuperHeros("Minimusen Mikkel ", 9, 9, 40));
-            Heros.Add(new SuperHeros("Katten Tiger", SuperHeros.SettingAttackRange(), 4, SuperHeros.AddingHP()));
+            Heros.Add(new SuperHeros("Katten Tiger", 4, 4));
             Heros.Add(new SuperHeros("Gummigeden Ivan", 6, 8, 70));
-            Heros.Add(new SuperHeros("elgen Egon", SuperHeros.SettingAttackRange(), 4, 90));
+            Heros.Add(new SuperHeros("elgen Egon", 4, 90));
 
         }
 

@@ -9,10 +9,10 @@ namespace FightArena
     class SuperHeros
     {
 
-        public static string Name { get; set; }
-        public static int AttackPower { get; set; }
-        public static int Defence { get; set; }
-        public static int HitPoints { get; set; }
+        public string Name { get; set; }
+        public int AttackPower { get; set; }
+        public int Defence { get; set; }
+        public int HitPoints { get; set; }
 
 
         public SuperHeros(string name, int attackPower, int defence, int hitPoints)
@@ -23,7 +23,23 @@ namespace FightArena
             HitPoints = hitPoints;
         }
 
-        public static int SettingAttackRange()
+        public SuperHeros(string name, int defence, int hitPoints)
+        {
+            Name = name;
+            AttackPower = SettingAttackRange();
+            Defence = defence;
+            HitPoints = hitPoints;
+        }
+
+        public SuperHeros(string name, int hitPoints)
+        {
+            Name = name;
+            AttackPower = SettingAttackRange();
+            Defence = SettingDefenceRange();
+            HitPoints = hitPoints;
+        }
+      
+        public int SettingAttackRange()
         {
             if (Name == "Super hunden dino")
             {
@@ -56,7 +72,7 @@ namespace FightArena
             return AttackPower;
         }
 
-        public static int SettingDefenceRange()
+        public int SettingDefenceRange()
         {
             if (Name == "Super hunden dino")
             {
@@ -67,7 +83,7 @@ namespace FightArena
             return Defence;
         }
 
-        public static int AddingHP()
+        public int AddingHP()
         {
             if (Name == "Katten Tiger")
             {
@@ -79,7 +95,6 @@ namespace FightArena
                     lifeCount++;
                 }
             }
-
             return HitPoints;
         }
 

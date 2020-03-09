@@ -10,10 +10,10 @@ namespace FightArena
     {
         void TeamFight()
         {
-            if (0)
-            {
+            //if (0)
+            //{
                 
-            }
+            //}
         }
     }
 }
