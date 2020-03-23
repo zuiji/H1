@@ -11,6 +11,7 @@ namespace VendingMachine
         {
             Console.WriteLine("Your Order is on its way");
             Thread.Sleep(5000);
+            Gui.Clear();
             StopTurn();
         }
 

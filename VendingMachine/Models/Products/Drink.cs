@@ -9,5 +9,9 @@
             this.Size = size;
         }
 
+        public override Product GetCopy()
+        {
+            return new Drink(this.Name,this.Price,this.ProductType,this.Size);
+        }
     }
 }

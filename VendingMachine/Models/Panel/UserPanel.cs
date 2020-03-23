@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using GetAnswer;
 using VendingMachine.Models;
@@ -15,32 +17,54 @@ namespace VendingMachine
         private VendingMachine vendingMachine = Singletons.GetVendingMachine();
         public void AccessPanel()
         {//todo Add payment. 
-            Console.WriteLine("welcome");
-            //Enum.Getname returnere alle navne i en enum;
-            ProductType productType =
-                GetAnswers.GetChoiceFromEnum<ProductType>("What do you want to buy");
-
-            Product product = vendingMachine.BroughtProduct(productType);
-
-            if (product != null)
+            while (true)
             {
-                EnjoyYourBuy(product);
-            }
-            else
-            {
-                SoldOut(product);
-            }
+                Console.WriteLine("welcome");
 
+                //Enum.Getname returnere alle navne i en enum;
+                ProductType productType =
+                    GetAnswers.GetChoiceFromEnum<ProductType>("What do you want to buy");
+                Gui.Clear();
+                try
+                {
+                    Product product = vendingMachine.BroughtProduct(productType);
+
+                    if (product != null)
+                    {
+                        EnjoyYourBuy(product);
+                    }
+                    else
+                    {
+                        canceled();
+                    }
+                }
+                catch (OutOfStockException)
+                {
+                    SoldOut();
+                }
+
+            }
         }
 
-        void SoldOut(Product product)
+        private void canceled()
         {
-            Console.WriteLine($"sorry your {product} was sold out.");
+            Console.WriteLine($"The payment was canceled");
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+            Gui.Clear();
+        }
+
+        void SoldOut()
+        {
+            Console.WriteLine($"sorry the selected product was sold out.");
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+            Gui.Clear();
         }
 
         void EnjoyYourBuy(Product product)
         {
-            Console.WriteLine($"Enjoy your {product}... Have a nice day");
+            Console.WriteLine($"Enjoy your {product.Name}... Have a nice day");
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+            Gui.Clear();
         }
     }
 }

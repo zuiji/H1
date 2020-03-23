@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -26,18 +28,27 @@ namespace VendingMachine
             AccessPanel = new ServicePanel();
             Console.WriteLine("Enter your Service Code...");
             byte trys = 0;
-
             while (trys < 3)
             {
                 Console.Write("Admin Code :");
                 string temp = Console.ReadLine();
-
-                if (temp == vendingMachine.AdminCode)
+                using (SHA512 shaM = new SHA512Managed())
                 {
-                    AccessPanel.AccessPanel();
+                    var h = shaM.ComputeHash(Encoding.UTF8.GetBytes(temp));
 
-                    trys = 3;
+                    var hashedInputStringBuilder = new System.Text.StringBuilder(128);
+                    foreach (var b in h)
+                        hashedInputStringBuilder.Append(b.ToString("X2"));
+
+
+                    if (hashedInputStringBuilder.ToString() == ConfigurationManager.AppSettings["AdminCode"])
+                    {
+                        AccessPanel.AccessPanel();
+
+                        trys = 3;
+                    }
                 }
+               
                 trys++;
             }
 
@@ -64,6 +75,7 @@ namespace VendingMachine
                     break;
                 case 1:
                     AccessServiceMode();
+                    AccessUserMode();
                     break;
             }
         }

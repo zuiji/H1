@@ -11,36 +11,26 @@ namespace VendingMachine
         public bool DrawerStage { get; }
         public void AccessPanel()
         {
-
-            int Anwser = GetAnswers.GetChoiceFromListAsInt("Will you open door", "Yes", "No");
-            switch (Anwser)
+            
+            Gui.Clear();
+            Console.WriteLine("door is now open");
+            Thread.Sleep(1000);
+            while (true)
             {
-                case 0:
-                    Gui.Clear();
-                    Console.WriteLine("door is now open");
-                    int Answer =
-                        GetAnswers.GetChoiceFromListAsInt("Will you Refill the products or Access the SafeBox", "Refill", "safeBox");
-                    switch (Answer)
-                    {
-                        case 0:
-                            vendingMachine.RefillStock(new Refiler());
-                            break;
-                        case 1:
-                            vendingMachine.SafeBoxOptions();
-                            break;
-                    }
-                    break;
-                case 1:
-                    Gui.Clear();
-                    Console.WriteLine("Door is not open And you will exit service more");
-                    Thread.Sleep(3000);
-                    Gui gui = new Gui();
-                    gui.AccessUserMode();
-                    break;
+                Gui.Clear();
+                int answer = GetAnswers.GetChoiceFromListAsInt("Will you Refill the products or Access the SafeBox", "Open stock", "Open safeBox", "Exit to userMode");
+                switch (answer)
+                {
+                    case 0:
+                        vendingMachine.StockOptions();
+                        break;
+                    case 1:
+                        Singletons.GetSafeBox().SafeBoxOptions();
+                        break;
+                    case 2:
+                        return;
+                }
             }
-
         }
-
-
     }
 }

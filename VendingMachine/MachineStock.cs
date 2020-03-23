@@ -1,48 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using VendingMachine.Models;
 
 namespace VendingMachine
 {
     class MachineStock
     {
+
         public Dictionary<ProductType, Stack<Product>> Products { get; set; }
+
         public MachineStock()
         {
-            Products = new Dictionary<ProductType, Stack<Product>>();
+            Products = Singletons.GetPersistancyClass().LoadProducts();
+            if (Products == null)
+            {
+                Products = new Dictionary<ProductType, Stack<Product>>();
 
-            //adding Drinks here
-            Products.Add(ProductType.CocaCola, new Stack<Product>(12));
-            for (int i = 0; i < 12; i++)
-            {
-                Products[ProductType.CocaCola]?.Push(new Drink("cola", 20, ProductType.CocaCola, 0.50));
-            }
-            Products.Add(ProductType.Fanta, new Stack<Product>(12));
-            for (int i = 0; i < 12; i++)
-            {
-                Products[ProductType.Fanta]?.Push(new Drink("Fanta", 20, ProductType.Fanta, 0.50));
-            }
-            Products.Add(ProductType.Cocio, new Stack<Product>(12));
-            for (int i = 0; i < 12; i++)
-            {
-                Products[ProductType.Cocio]?.Push(new Drink("Cocio", 15, ProductType.Cocio, 0.50));
-            }
 
-            //Adding snacks here 
-            Products.Add(ProductType.Snickers, new Stack<Product>(12));
-            for (int i = 0; i < 12; i++)
-            {
-                Products[ProductType.Snickers]?.Push(new Snack("Snickers", 10, ProductType.Snickers, 50));
-            }
-            Products.Add(ProductType.Mars, new Stack<Product>(12));
-            for (int i = 0; i < 12; i++)
-            {
-                Products[ProductType.Mars]?.Push(new Snack("Mars", 10, ProductType.Mars, 50));
-            }
-            Products.Add(ProductType.Bounty, new Stack<Product>(12));
-            for (int i = 0; i < 12; i++)
-            {
-                Products[ProductType.Bounty]?.Push(new Snack("Bounty", 10, ProductType.Bounty, 50));
+                foreach (ProductType productExamplesKey in Singletons.getProductExamples().Keys)
+                {
+                    Products.Add(productExamplesKey, new Stack<Product>(12));
+                    for (int i = 0; i < 12; i++)
+                    {
+                        Products[productExamplesKey]?.Push(Singletons.getProductExamples()[productExamplesKey].GetCopy());
+                    }
+                }
+
+                Singletons.GetPersistancyClass().SaveProducts(Products);
             }
         }
 
@@ -59,6 +44,7 @@ namespace VendingMachine
                     Products[itemsKey].Push(items[itemsKey].Pop());
                 }
             }
+            Singletons.GetPersistancyClass().SaveProducts(Products);
         }
 
         public Product RemoveProductFromStock(ProductType productType)
@@ -66,12 +52,31 @@ namespace VendingMachine
 
             if (Products.ContainsKey(productType) && Products[productType].Any())
             {
-                return Products[productType].Pop();
+                var product = Products[productType].Pop();
+                Singletons.GetPersistancyClass().SaveProducts(Products);
+                return product;
             }
 
-            return null;
+            throw new OutOfStockException("The product is out of stock");
             //MachineStock.Products[productType].Pop();
 
+        }
+
+        public bool OutOfStock(ProductType productType)
+        {
+            if (!Products.ContainsKey(productType))
+            {
+                return true;
+            }
+            if (!Products[productType].Any())
+            {
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public List<Product> GetAlmostEmptyStock()
@@ -81,7 +86,7 @@ namespace VendingMachine
             {
                 if (Products[productsId].Count < 3)
                 {
-                    productAlmostOutOfStock.Add(Products[productsId].Peek());
+                    productAlmostOutOfStock.Add(Singletons.getProductExamples()[productsId].GetCopy());
                 }
             }
 

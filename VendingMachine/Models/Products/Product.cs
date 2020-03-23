@@ -15,5 +15,6 @@
             this.ProductType = productType;
         }
 
+        public abstract Product GetCopy();
     }
 }

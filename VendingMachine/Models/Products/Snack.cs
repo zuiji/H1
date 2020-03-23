@@ -9,5 +9,10 @@
             this.WeightInGrams = weightInGrams;
         }
 
+
+        public override Product GetCopy()
+        {
+           return new Snack(this.Name,this.Price,this.ProductType,this.WeightInGrams);
+        }
     }
 }
